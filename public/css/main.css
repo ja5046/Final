@@ -1,0 +1,35 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+.list-group {
+  width: 35%;
+  margin: 5% auto;
+}
+.list-group-item {
+  display: flex;
+  display: text
+}
+
+.form-check {
+  margin-left: 2.5%;
+}
+
+.formContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.todoContainer {
+  margin: 5% auto;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+}
+
+.form-horizontal .control-label {
+  text-align: center;
+}
