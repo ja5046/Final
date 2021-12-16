@@ -10,13 +10,14 @@ let Sent = require('sentiment')
 let sentiment = new Sent()
 //
 // set up and connect to our remote database
-let mongoose = require('mongoose')
-let mongoDB = process.env.MONGO_DB
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true})
-let db = mongoose.connection
+//let mongoose = require('mongoose')
+//let mongoDB = process.env.MONGO_DB
+//mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true})
+//let db = mongoose.connection
 //
 // get our models
 const Todo = require('./models/Todo.js')
+const Love = require('./models/love.js')
 
 // set up handlebars view engine
 var handlebars = require('express-handlebars').create({
@@ -35,39 +36,32 @@ app.use(function(req, res, next){
   // 	res.locals.partials.listOfWorks = listOfWorks;
  	next();
 });
-
-
+let love = []
 
 app.get('/', function(req, res){
-  res.render('todos');
+  res.render('final');
 })
 
-
-app.get('/data/todos', function(req, res) {
-  Todo.find()
-    .then(todos => {
-      console.log('todos: ', todos)
-      res.json(todos)
-    })
-})
-
-app.post('/todo', function(req, res) {
-  let newTodo = new Todo(req.body)
-  newTodo.itemId = newTodo._id.toString()
-  newTodo.save((err, doc) => {
-    console.log('data: ', doc)
-    res.send({success: true})
+app.get('/data/love', function(req, res){
+    res.json({love_array: love})
   })
+
+
+app.post('/love', function(req,res) {
+  console.log('body: ', req.body)
+  love.push(req.body)
+  res.send({success:true})
 })
 
-
-app.put('/todo', function(req, res) {
+app.put('/love', function(req, res) {
   console.log('req.body: ', req.body)
-  Todo.findOneAndUpdate({itemId: req.body.itemId}, req.body).then(data => {
+  Love.findOneAndUpdate({itemId: req.body.itemId}, req.body).then(data => {
     console.log('data: ', data)
     res.send({success: true})
   })
 })
+
+
 
 
 app.delete('/todo', function(req, res) {

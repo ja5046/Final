@@ -1,0 +1,39 @@
+<div class="container" id="final">
+	<script id="todoTemplate" type="text/x-handlebars-template">
+	<ul class="list-group">
+	\{{#each this}}
+	\{{#unless isDone}}
+	<li class="list-group-item">
+	<div>\{{text}}</div><div class="form-check">
+	  <input class="form-check-input" type="checkbox" id="\{{itemId}}" ><div>name one:\{{nameone}}</div><div>name two\{{nametwo}}</div><div>percentage\{{Compatible}}</div>
+	</div></div>
+
+	</li>
+	\{{/unless}}
+	\{{/each}}
+
+	</ul>
+	</script>
+	<div class=" clearfix">
+		<div class="calc col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+			<img src="Match.jpg">
+				<h2>Love Calculator</h2>
+				<h5>Input two peoples names to calculate the love....</h5>
+				<form role="form" class="form-horizontal">
+						<div class="form-group">
+								<input type="text" class="form-control" name="names" placeholder="Name One" id="Name-one" />
+						</div>
+						<div class="form-group">
+								<input type="text" class="form-control" name="names" placeholder="Name Two" id="Name-two" />
+						</div>
+						<div class="form-group">
+								<button class="btn btn-danger pull-right" type="submit" id="submit">Calculate</button>
+						</div>
+				</form>
+				<p id="warning" class="text-danger"></p>
+				<h1 id="result" class="text-center"></h1>
+		</div>
+	</div>
+	<script src="/js/ajax-submit.js">
+  </script>
+</div>
